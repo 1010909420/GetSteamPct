@@ -1,0 +1,3 @@
+{
+  "ConnectionString": "Server=localhost;Port=3306;Database=steam_pct; User=root;Password=123456; CharSet=utf8;"
+}

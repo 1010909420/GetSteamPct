@@ -1,0 +1,22 @@
+
+drop table if exists activity;
+drop table if exists goods;
+
+create table goods(
+	`id` int primary key auto_increment,
+	`name` varchar(255),
+	`price` decimal(19, 2),
+	`imgURI` varchar(255),
+	`createTime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '创建时间',
+	`status` int(11) DEFAULT '0' COMMENT '状态'
+);
+
+
+create table activity(
+	`id` int primary key auto_increment,
+	`goodsId` int,
+	`pct` int(2),
+	`finalPrice` decimal(19, 2),
+	`createTime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '创建时间',
+	`status` int(11) DEFAULT '0' COMMENT '状态'
+);

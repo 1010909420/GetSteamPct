@@ -1,0 +1,12 @@
+E:\visualstudio workspace\GetSteamPct\EF\bin\Debug\netstandard2.0\EF.deps.json
+E:\visualstudio workspace\GetSteamPct\EF\bin\Debug\netstandard2.0\EF.dll
+E:\visualstudio workspace\GetSteamPct\EF\obj\Debug\netstandard2.0\EF.csprojAssemblyReference.cache
+E:\visualstudio workspace\GetSteamPct\EF\obj\Debug\netstandard2.0\EF.csproj.CoreCompileInputs.cache
+E:\visualstudio workspace\GetSteamPct\EF\obj\Debug\netstandard2.0\EF.AssemblyInfoInputs.cache
+E:\visualstudio workspace\GetSteamPct\EF\obj\Debug\netstandard2.0\EF.AssemblyInfo.cs
+E:\visualstudio workspace\GetSteamPct\EF\bin\Debug\netstandard2.0\EF.pdb
+E:\visualstudio workspace\GetSteamPct\EF\bin\Debug\netstandard2.0\Model.dll
+E:\visualstudio workspace\GetSteamPct\EF\bin\Debug\netstandard2.0\Model.pdb
+E:\visualstudio workspace\GetSteamPct\EF\obj\Debug\netstandard2.0\EF.csproj.CopyComplete
+E:\visualstudio workspace\GetSteamPct\EF\obj\Debug\netstandard2.0\EF.dll
+E:\visualstudio workspace\GetSteamPct\EF\obj\Debug\netstandard2.0\EF.pdb

@@ -1,0 +1,12 @@
+E:\visualstudio workspace\GetSteamPct\Model\bin\Debug\netstandard2.0\Model.deps.json
+E:\visualstudio workspace\GetSteamPct\Model\bin\Debug\netstandard2.0\Model.dll
+E:\visualstudio workspace\GetSteamPct\Model\bin\Debug\netstandard2.0\Model.pdb
+E:\visualstudio workspace\GetSteamPct\Model\obj\Debug\netstandard2.0\Model.csproj.CoreCompileInputs.cache
+E:\visualstudio workspace\GetSteamPct\Model\obj\Debug\netstandard2.0\Model.AssemblyInfoInputs.cache
+E:\visualstudio workspace\GetSteamPct\Model\obj\Debug\netstandard2.0\Model.AssemblyInfo.cs
+E:\visualstudio workspace\GetSteamPct\Model\obj\Debug\netstandard2.0\Model.dll
+E:\visualstudio workspace\GetSteamPct\Model\obj\Debug\netstandard2.0\Model.pdb
+E:\visualstudio workspace\GetSteamPct\Model\bin\Debug\netstandard2.0\System.ComponentModel.Annotations.dll
+E:\visualstudio workspace\GetSteamPct\Model\bin\Debug\netstandard2.0\System.ComponentModel.Annotations.xml
+E:\visualstudio workspace\GetSteamPct\Model\obj\Debug\netstandard2.0\Model.csprojAssemblyReference.cache
+E:\visualstudio workspace\GetSteamPct\Model\obj\Debug\netstandard2.0\Model.csproj.CopyComplete

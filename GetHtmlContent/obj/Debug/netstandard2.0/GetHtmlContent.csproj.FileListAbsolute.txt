@@ -1,0 +1,16 @@
+E:\visualstudio workspace\GetSteamPct\GetHtmlContent\bin\Debug\netstandard2.0\GetHtmlContent.deps.json
+E:\visualstudio workspace\GetSteamPct\GetHtmlContent\bin\Debug\netstandard2.0\GetHtmlContent.dll
+E:\visualstudio workspace\GetSteamPct\GetHtmlContent\obj\Debug\netstandard2.0\GetHtmlContent.csproj.CoreCompileInputs.cache
+E:\visualstudio workspace\GetSteamPct\GetHtmlContent\obj\Debug\netstandard2.0\GetHtmlContent.AssemblyInfoInputs.cache
+E:\visualstudio workspace\GetSteamPct\GetHtmlContent\obj\Debug\netstandard2.0\GetHtmlContent.AssemblyInfo.cs
+E:\visualstudio workspace\GetSteamPct\GetHtmlContent\bin\Debug\netstandard2.0\GetHtmlContent.pdb
+E:\visualstudio workspace\GetSteamPct\GetHtmlContent\obj\Debug\netstandard2.0\GetHtmlContent.csprojAssemblyReference.cache
+E:\visualstudio workspace\GetSteamPct\GetHtmlContent\obj\Debug\netstandard2.0\GetHtmlContent.dll
+E:\visualstudio workspace\GetSteamPct\GetHtmlContent\obj\Debug\netstandard2.0\GetHtmlContent.pdb
+E:\visualstudio workspace\GetSteamPct\GetHtmlContent\bin\Debug\netstandard2.0\DAL.dll
+E:\visualstudio workspace\GetSteamPct\GetHtmlContent\bin\Debug\netstandard2.0\EF.dll
+E:\visualstudio workspace\GetSteamPct\GetHtmlContent\bin\Debug\netstandard2.0\Model.dll
+E:\visualstudio workspace\GetSteamPct\GetHtmlContent\bin\Debug\netstandard2.0\DAL.pdb
+E:\visualstudio workspace\GetSteamPct\GetHtmlContent\bin\Debug\netstandard2.0\Model.pdb
+E:\visualstudio workspace\GetSteamPct\GetHtmlContent\bin\Debug\netstandard2.0\EF.pdb
+E:\visualstudio workspace\GetSteamPct\GetHtmlContent\obj\Debug\netstandard2.0\GetHtmlContent.csproj.CopyComplete

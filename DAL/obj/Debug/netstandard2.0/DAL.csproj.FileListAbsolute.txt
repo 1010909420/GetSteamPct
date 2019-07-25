@@ -1,0 +1,14 @@
+E:\visualstudio workspace\GetSteamPct\DAL\bin\Debug\netstandard2.0\DAL.deps.json
+E:\visualstudio workspace\GetSteamPct\DAL\bin\Debug\netstandard2.0\DAL.dll
+E:\visualstudio workspace\GetSteamPct\DAL\bin\Debug\netstandard2.0\DAL.pdb
+E:\visualstudio workspace\GetSteamPct\DAL\bin\Debug\netstandard2.0\EF.dll
+E:\visualstudio workspace\GetSteamPct\DAL\bin\Debug\netstandard2.0\Model.dll
+E:\visualstudio workspace\GetSteamPct\DAL\bin\Debug\netstandard2.0\EF.pdb
+E:\visualstudio workspace\GetSteamPct\DAL\bin\Debug\netstandard2.0\Model.pdb
+E:\visualstudio workspace\GetSteamPct\DAL\obj\Debug\netstandard2.0\DAL.csprojAssemblyReference.cache
+E:\visualstudio workspace\GetSteamPct\DAL\obj\Debug\netstandard2.0\DAL.csproj.CoreCompileInputs.cache
+E:\visualstudio workspace\GetSteamPct\DAL\obj\Debug\netstandard2.0\DAL.AssemblyInfoInputs.cache
+E:\visualstudio workspace\GetSteamPct\DAL\obj\Debug\netstandard2.0\DAL.AssemblyInfo.cs
+E:\visualstudio workspace\GetSteamPct\DAL\obj\Debug\netstandard2.0\DAL.csproj.CopyComplete
+E:\visualstudio workspace\GetSteamPct\DAL\obj\Debug\netstandard2.0\DAL.dll
+E:\visualstudio workspace\GetSteamPct\DAL\obj\Debug\netstandard2.0\DAL.pdb
