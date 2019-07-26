@@ -34,8 +34,8 @@ namespace DAL.Public
                     foreach (T entity in list)
                     {
                         db.Set<T>().Add(entity);
+                        result = db.SaveChanges();
                     }
-                    result = db.SaveChanges();
                     transaction.Commit();
                 }
                 catch (Exception)

@@ -16,14 +16,14 @@ namespace GetSteamPct
         public static void Main(string[] args)
         {
             //string appPath = AppContext.BaseDirectory;
-            GetHtml gc = new GetHtml();
-            gc.Start();
+            //GetHtml gc = new GetHtml();
+            //gc.Start();
 
             CreateWebHostBuilder(args).Build().Run();
         }
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
-            WebHost.CreateDefaultBuilder(args)
+            WebHost.CreateDefaultBuilder(args).UseUrls("http://*:5001")
                 .UseStartup<Startup>();
     }
 }

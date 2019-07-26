@@ -11,5 +11,6 @@ namespace GetHtmlContent.Model
         public String pct { get; set; }
         public String originalPrice { get; set; }
         public String finalPrice { get; set; }
+        public String tag { get; set; }
     }
 }

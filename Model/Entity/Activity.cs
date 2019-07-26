@@ -12,9 +12,12 @@ namespace Model.Entity
         public int goodsId { get; set; }
         [ForeignKey("goodsId")]
         public Goods goods { get; set; }
+        public int batch { get; set; }
+        public int rank { get; set; }
         public int pct { get; set; }
         public decimal finalPrice { get; set; }
         public DateTime createTime { get; set; }
+        public DateTime endTime { get; set; }
         public int status { get; set; }
     }
 }

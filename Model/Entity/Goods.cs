@@ -10,6 +10,7 @@ namespace Model.Entity
         public int id { get; set; }
         public String name { get; set; }
         public decimal price { get; set; }
+        public String tag { get; set; }
         public String imgURI { get; set; }
         public DateTime createTime { get; set; }
         public int status { get; set; }
