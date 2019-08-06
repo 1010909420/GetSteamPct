@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using GetSteamPct.Middleware;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -40,8 +41,10 @@ namespace GetSteamPct
                 app.UseHsts();
             }
 
+            app.UseRequestLog();
             app.UseHttpsRedirection();
             app.UseMvc();
+            app.UseStaticFiles(); // 图片有时候无法打开 添加此代码可解决
         }
     }
 }

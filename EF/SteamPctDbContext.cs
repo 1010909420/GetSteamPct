@@ -11,6 +11,7 @@ namespace EF
     {
         public DbSet<Goods> goods { get; set; }
         public DbSet<Activity> activity { get; set; }
+        public DbSet<RequestLog> requestLog { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

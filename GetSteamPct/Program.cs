@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using GetHtmlContent;
+using System.Threading;
 
 namespace GetSteamPct
 {
@@ -15,10 +16,6 @@ namespace GetSteamPct
     {
         public static void Main(string[] args)
         {
-            //string appPath = AppContext.BaseDirectory;
-            //GetHtml gc = new GetHtml();
-            //gc.Start();
-
             CreateWebHostBuilder(args).Build().Run();
         }
 

@@ -21,36 +21,86 @@ namespace GetHtmlContent
         public void Start()
         {
 
-            Get();
-            //// 定时发送
+            //Get();
+            // 定时发送
             //DateTime nowDate = DateTime.Now;
             //DateTime Date = DateTime.Parse("11:05:00");
             //TimeSpan timeSpan = Date - nowDate;
             //int intTotalMilliseconds = timeSpan.TotalMilliseconds > 0 ? (int)timeSpan.TotalMilliseconds : (int)timeSpan.TotalMilliseconds + 24 * 60 * 60 * 1000;
 
-            ////Console.Write(intTotalMilliseconds);
-            //Timer timer = new Timer(e =>
-            //{
-            //    Get();
-            //}, "", intTotalMilliseconds, 4 * 60 * 60 * 1000);
+            //Console.Write(intTotalMilliseconds);
+            Timer timer = new Timer(e =>
+            {
+                string logPath = AppContext.BaseDirectory;
+                logPath += "log.txt";
+                if(!File.Exists(logPath))
+                {
+                    File.Create(logPath);
+                }
+                string log;
+
+                try
+                {
+                    Get(3);
+                    log = "现在时间: " + DateTime.Now + ", 已获取数据";
+                }
+                catch (Exception ex)
+                {
+                    log = "现在时间: " + DateTime.Now + ", 出现异常: " + ex.Message;
+                }
+
+                StreamWriter wLog;
+                wLog = File.AppendText(logPath);
+                wLog.WriteLine(log);
+                wLog.Flush();
+                wLog.Close();
+
+                //for (int i = 1; i <= 3; i++)
+                //{
+                //    //ThreadPool执行任务
+                //    ThreadPool.QueueUserWorkItem(new WaitCallback((obj) => {
+
+                //        string log;
+
+                //        try
+                //        {
+                //            Get((int)obj);
+                //            log = "现在时间: " + DateTime.Now + ", 已获取数据";
+                //        }
+                //        catch (Exception ex)
+                //        {
+                //            log = "现在时间: " + DateTime.Now + ", 出现异常: " + ex.Message;
+                //        }
+
+                //        StreamWriter wLog;
+                //        wLog = File.AppendText(logPath);
+                //        wLog.WriteLine(log);
+                //        wLog.Flush();
+                //        wLog.Close();
+                //    }), i);
+                //}
 
 
-            
+
+            }, "", 0, 60 * 60 * 1000);
+
+
+
         }
 
-        private void Get()
+        private void Get(int i)
         {
-            string appPath = AppContext.BaseDirectory;
-            if(Directory.Exists(appPath))
-            {
-                DirectoryInfo directoryInfo = new DirectoryInfo(appPath);
-                directoryInfo = directoryInfo.Parent.Parent.Parent;
-                appPath = directoryInfo.ToString() + "\\wwwroot\\img\\";
-            }
+            try { 
+                string appPath = AppContext.BaseDirectory;
+                if(Directory.Exists(appPath))
+                {
+                    DirectoryInfo directoryInfo = new DirectoryInfo(appPath);
+                    //directoryInfo = directoryInfo.Parent.Parent.Parent;
+                    appPath = directoryInfo.ToString() + "\\wwwroot\\images\\";
+                }
 
-            List<GoodsInfo> list = new List<GoodsInfo>();
+                List<GoodsInfo> list = new List<GoodsInfo>();
 
-            for (int i = 0; i < 3; i++) {
                 int start = 15 * i;
                 string json = HttpGet("https://store.steampowered.com/contenthub/querypaginated/specials/TopSellers/render/?query=&start="+ start +"&count=15&cc=CN&l=schinese&v=4&tag=", "");
                 json = Regex.Match(json, "\"results_html\":\"[\\S\\s]*\",").Value;
@@ -66,9 +116,7 @@ namespace GetHtmlContent
                 HtmlDocument doc = new HtmlDocument();
                 doc.LoadHtml(pageHtml);
                 //查找节点
-                //HtmlNodeCollection titleNodes = doc.DocumentNode.SelectNodes("//div[@id='TopSellersRows']");
                 HtmlNodeCollection itemNodes = doc.DocumentNode.SelectNodes(".//a[@class='tab_item  ']");
-                //HtmlNodeCollection titleNodes = doc.DocumentNode.SelectNodes("//a[@class='tab_item  ']");
                 if (itemNodes != null)
                 {
                     Regex priceRegex = new Regex("\\d+(\\.\\d+)?");
@@ -88,69 +136,76 @@ namespace GetHtmlContent
                         list.Add(g);
                     }
                 }
-            }
-
-            ActivityDAO activityDAO = new ActivityDAO();
-            List<Activity> activityList = activityDAO.GetAll().Where(e => e.status == 1).ToList();
-
-            int alc = activityList.Count();
-            for (int i = 0; i < alc; i++)
-            {
-                activityList[i].endTime = DateTime.Now;
-                activityList[i].status = 0;
-            }
-            int batch = 0;
-            if(alc != 0) { 
-                activityDAO.BatchUpdate(activityList);
-                batch = activityList[0].batch;
-            }
-
-            GoodsDAO goodsDAO = new GoodsDAO();
-            List<Activity> newActivityList = new List<Activity>();
-            int rank = 1;
-            foreach (var g in list)
-            {
-                Goods goods = goodsDAO.GetAll().Where(e => e.name == g.name).FirstOrDefault();
-                if (goods == null)
+                int rank = 1 + 15 * (i - 1);
+                List<int> arr = new List<int>();
+                for(int j = 0; j < 15; j++)
                 {
-                    goods = new Goods() {
-                        name = g.name,
-                        price = decimal.Parse(g.originalPrice),
-                        tag = g.tag,
-                        imgURI = g.img,
-                        createTime = DateTime.Now,
-                        status = 1
-                    };
-                    goodsDAO.Add(goods);
-                } else
-                {
-                    if(File.Exists(goods.imgURI)) { 
-                        FileInfo fileInfo = new FileInfo(goods.imgURI);
-                        fileInfo.Delete();
-                    }
-
-                    goods.imgURI = g.img;
-                    goods.price = decimal.Parse(g.originalPrice);
-                    goods.tag = g.tag;
-                    goods.createTime = DateTime.Now;
-                    goods.status = 1;
-                    goodsDAO.Update(goods);
+                    arr.Add(rank+j);
                 }
 
-                Activity activity = new Activity() {
-                    goodsId = goods.id,
-                    finalPrice = decimal.Parse(g.originalPrice),
-                    pct = int.Parse(g.pct),
-                    status = 1,
-                    createTime = DateTime.Now,
-                    rank = rank++,
-                    batch = batch + 1
-                };
+                ActivityDAO activityDAO = new ActivityDAO();
+                List<Activity> activityList = activityDAO.GetAll().Where(e => e.status == 1 && arr.Contains(e.rank)).ToList();
 
-                newActivityList.Add(activity);
+                int alc = activityList.Count();
+                for (int j = 0; j < alc; j++)
+                {
+                    activityList[j].endTime = DateTime.Now;
+                    activityList[j].status = 0;
+                }
+                int batch = 0;
+                if(alc != 0) { 
+                    activityDAO.BatchUpdate(activityList);
+                    batch = activityList[0].batch;
+                }
+
+                GoodsDAO goodsDAO = new GoodsDAO();
+                List<Activity> newActivityList = new List<Activity>();
+                foreach (var g in list)
+                {
+                    Goods goods = goodsDAO.GetAll().Where(e => e.name == g.name).FirstOrDefault();
+                    if (goods == null)
+                    {
+                        goods = new Goods() {
+                            name = g.name,
+                            price = decimal.Parse(g.originalPrice),
+                            tag = g.tag,
+                            imgURI = g.img,
+                            createTime = DateTime.Now,
+                            status = 1
+                        };
+                        goodsDAO.Add(goods);
+                    } else
+                    {
+                        if(File.Exists(goods.imgURI)) { 
+                            FileInfo fileInfo = new FileInfo(goods.imgURI);
+                            fileInfo.Delete();
+                        }
+
+                        goods.imgURI = g.img;
+                        goods.price = decimal.Parse(g.originalPrice);
+                        goods.tag = g.tag;
+                        goods.createTime = DateTime.Now;
+                        goods.status = 1;
+                        goodsDAO.Update(goods);
+                    }
+
+                    Activity activity = new Activity() {
+                        goodsId = goods.id,
+                        finalPrice = decimal.Parse(g.finalPrice),
+                        pct = int.Parse(g.pct),
+                        status = 1,
+                        createTime = DateTime.Now,
+                        rank = rank++,
+                        batch = batch + 1
+                    };
+
+                    newActivityList.Add(activity);
+                }
+                activityDAO.SaveList(newActivityList);
+            } catch(Exception ex)
+            {
+                throw ex;
             }
-            activityDAO.SaveList(newActivityList);
-
         }
 
 
@@ -184,7 +239,7 @@ namespace GetHtmlContent
             t.Wait();
             Stream responseStream = new MemoryStream(t.Result);
             Stream stream = new FileStream(savePath, FileMode.Create);
-            byte[] bArr = new byte[1024];
+            byte[] bArr = new byte[4096];
             int size = responseStream.Read(bArr, 0, bArr.Length);
             while (size > 0)
             {
@@ -193,7 +248,7 @@ namespace GetHtmlContent
             }
             stream.Close();
             responseStream.Close();
-            return "img\\" + saveFileName + ".jpg";
+            return "images/" + saveFileName + ".jpg";
         } 
     }
 }
